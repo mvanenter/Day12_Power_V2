@@ -3,7 +3,7 @@
 **An interactive map of electricity generation across New Zealand**  
 *#30DayMapChallenge 2026 — Day 12: Power*
 
-(screenshot.png)
+![Aotearoa’s Power Stations](images/AotearoaPower.png)
 
 🌐 **[Explore the live map](https://mvanenter.github.io/Day12_Power_V2/)**
 
