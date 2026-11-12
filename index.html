@@ -91,6 +91,44 @@ body.desktop-sidebar-collapsed .leaflet-control-zoom{margin-right:70px!important
   body.mobile-sidebar-open .leaflet-control-zoom{margin-bottom:calc(min(70dvh,640px) + 12px)!important}
 }
 @media(prefers-reduced-motion:reduce){.sidebar,.sidebar-toggle-arrow{transition:none}}
+
+/* Fixed left-hand layer rail: dedicated desktop gutter, no controls over the map. */
+@media(min-width:961px){
+  #map{left:208px}
+  .head{left:226px}
+  .foot{left:226px}
+  .layers-rail{position:fixed;z-index:700;top:12px;bottom:12px;left:12px;width:184px;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:13px;box-shadow:0 4px 18px #26323a12;display:flex;flex-direction:column;overflow:hidden}
+  .layers-toggle{cursor:default}
+  .layers-toggle .layers-chevron{display:none}
+}
+.layers-toggle{display:flex;align-items:center;gap:8px;border:0;border-bottom:1px solid var(--line);background:#fff;color:var(--ink);font:700 13px system-ui,sans-serif;text-align:left;padding:13px 12px;width:100%;min-height:43px}
+.layers-chevron{margin-left:auto}
+.layers-body{padding:11px;overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0}
+.layers-body>h2{font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.layers-rail .pills{display:flex;flex-direction:column;flex-wrap:nowrap;gap:5px;margin:0}
+.layers-rail .pill{width:100%;min-height:33px;display:flex;justify-content:flex-start;border-radius:9px;text-align:left;padding:7px 9px;white-space:nowrap;font-size:12px}
+.layers-rail .pill em{margin-left:auto;font-size:11px}
+.layers-rail .bars{position:static;width:auto;bottom:auto;left:auto;margin:16px 0 0;padding:13px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;background:transparent}
+.layers-rail .bars h2{font-size:10px;line-height:1.4}
+.layers-rail .br{grid-template-columns:60px minmax(0,1fr) 53px;gap:4px;font-size:10px}
+.layers-rail .br span:last-child{font-size:10px}
+.layers-rail .tr{height:7px}
+.layers-rail .pill:focus-visible,.layers-toggle:focus-visible{outline:3px solid #0f8b8d;outline-offset:-3px}
+@media(max-width:960px){
+  /* The same vertical layer list opens only on demand on narrow screens. */
+  #map{left:0}
+  .layers-rail{position:fixed;z-index:640;left:10px;top:132px;width:147px;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 15px #26323a22;overflow:hidden;max-height:calc(100dvh - 210px)}
+  .layers-toggle{cursor:pointer;min-height:38px;padding:9px 11px;font-size:12px;border-bottom:0}
+  .layers-rail:not(.is-open) .layers-body{display:none}
+  .layers-rail.is-open{width:202px;display:flex;flex-direction:column}
+  .layers-rail.is-open .layers-toggle{border-bottom:1px solid var(--line)}
+  .layers-body{padding:10px}
+  .layers-rail .bars{display:block}
+  .layers-rail .pill{min-height:34px}
+  .layers-rail:not(.is-open) .layers-chevron{transform:rotate(180deg)}
+}
+@media(max-width:480px){.layers-rail{top:143px;max-height:calc(100dvh - 210px)}}
+
 </style>
 </head>
 <body>
@@ -102,9 +140,15 @@ body.desktop-sidebar-collapsed .leaflet-control-zoom{margin-right:70px!important
     <p class="take">Nearly half of the capacity on this map is hydro, and two thirds of that is in the South Island.</p></div>
     <div class="stats" id="stats"></div>
   </div>
-  <div class="pills" id="pills"></div>
 </div>
-<div class="bars"><h2>Capacity by fuel · visible stations</h2><div id="bars"></div></div>
+<aside class="layers-rail" id="layers-rail" aria-label="Fuel and transmission map layers">
+  <button type="button" class="layers-toggle" id="layers-toggle" aria-controls="layers-body" aria-expanded="true"><span aria-hidden="true">☷</span> <span id="layers-toggle-label">Map layers</span> <span class="layers-chevron" aria-hidden="true">▾</span></button>
+  <div class="layers-body" id="layers-body">
+    <h2>Generation types</h2>
+    <div class="pills" id="pills"></div>
+    <div class="bars"><h2>Capacity by fuel · visible stations</h2><div id="bars"></div></div>
+  </div>
+</aside>
 <aside class="sidebar" id="power-sidebar" aria-label="Power system explorer">
   <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-controls="sidebar-body" aria-expanded="false"><span class="sidebar-toggle-grip" aria-hidden="true"></span><span id="sidebar-toggle-label">Explore generation overview</span><span class="sidebar-toggle-arrow" aria-hidden="true">⌃</span></button>
   <div class="sidebar-body" id="sidebar-body">
@@ -139,6 +183,18 @@ const map=L.map('map',{zoomControl:false,zoomSnap:.25,minZoom:4,attributionContr
 L.control.zoom({position:'bottomright'}).addTo(map);
 function fit(){const m=innerWidth<=960;map.fitBounds([[-47.4,166.2],[-34.2,178.8]],{paddingTopLeft:[10,document.querySelector('.head').offsetHeight+12],paddingBottomRight:[m?10:(document.body.classList.contains('desktop-sidebar-collapsed')?15:335),m?72:40]})}
 fit();addEventListener('resize',()=>{map.invalidateSize();fit()});
+const layersRail=document.getElementById('layers-rail');
+const layersToggle=document.getElementById('layers-toggle');
+function syncLayers(){
+  const mobile=matchMedia('(max-width:960px)').matches;
+  const open=!mobile||layersRail.classList.contains('is-open');
+  layersToggle.setAttribute('aria-expanded',String(open));
+  layersToggle.querySelector('.layers-chevron').textContent=open?'▾':'▴';
+  document.getElementById('layers-body').inert=!open;
+}
+layersToggle.addEventListener('click',()=>{if(!matchMedia('(max-width:960px)').matches)return;layersRail.classList.toggle('is-open');syncLayers()});
+matchMedia('(max-width:960px)').addEventListener('change',()=>{layersRail.classList.remove('is-open');syncLayers()});
+syncLayers();
 const sidebar=document.getElementById('power-sidebar');
 const sidebarToggle=document.getElementById('sidebar-toggle');
 const sidebarBody=document.getElementById('sidebar-body');
