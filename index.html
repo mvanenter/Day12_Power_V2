@@ -94,8 +94,8 @@ Promise.all([
     m.bindTooltip(esc(r.name),{direction:"top",offset:[0,-4]});
     m.bindPopup(`<p class="pt">${esc(r.name)}</p><p class="pf"><i style="background:${c}"></i>${esc(r.fuel)}</p>
       <div class="pd"><span>Capacity</span><b>${r.mw>=10?fmt(r.mw):r.mw.toFixed(2)} MW</b>
-      <span>Share</span><b>${(r.mw/total*100).toFixed(1)}% of the total</b>
-      <span>Rank</span><b>${r.rank} of ${rows.length}</b>
+      <span>Share</span><b>${(r.mw/total*100).toFixed(1)}% of mapped capacity</b>
+      <span>Size rank</span><b>#${r.rank} of ${rows.length} by capacity</b>
       ${r.operator?`<span>Operator</span><b>${esc(r.operator)}</b>`:""}
       ${r.start_date?`<span>Since</span><b>${esc(r.start_date)}</b>`:""}</div>`,{autoPanPadding:[20,120]});
     m.addTo(by[r.fuel].layer);
