@@ -3,6 +3,8 @@
 **An interactive map of electricity generation across New Zealand**  
 *#30DayMapChallenge 2026 — Day 12: Power*
 
+(screenshot.png)
+
 🌐 **[Explore the live map](https://mvanenter.github.io/Day12_Power_V2/)**
 
 This project explores **where electricity is generated in Aotearoa New Zealand**, the mix of generation technologies, and the differences between the North and South Islands. It combines mapped power stations and high-voltage transmission lines in a browser-based map, with interactive filtering and a summary of the official generation-investment pipeline.
