@@ -16,6 +16,7 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(
 .row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
 h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
 .sub{margin:0;font-size:13.5px;color:var(--mute)}
+.take{margin:6px 0 0;font-size:14px;font-weight:600;max-width:620px}
 .stats{font-size:13.5px;color:var(--mute)}
 .stats b{color:var(--ink)}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
@@ -42,7 +43,7 @@ h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
 .pd span{color:var(--mute)}
 .pd b{font-weight:600}
 .leaflet-tooltip{border:1px solid var(--line);color:var(--ink);font-weight:600;border-radius:8px;box-shadow:none}
-@media(max-width:720px){h1{font-size:21px}.bars{display:none}.foot{font-size:10.5px}}
+@media(max-width:720px){h1{font-size:21px}.bars{display:none}.foot{font-size:10px}.sub,.take,.stats{font-size:12.5px}.pill{padding:5px 9px;font-size:12px}.pills{gap:6px;margin-top:8px}}
 </style>
 </head>
 <body>
@@ -50,7 +51,8 @@ h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
 <div class="head">
   <div class="row">
     <div><h1>Aotearoa’s power stations</h1>
-    <p class="sub">Power stations as mapped in OpenStreetMap. Area of a circle by installed capacity.</p></div>
+    <p class="sub">Power stations as mapped in OpenStreetMap. Area of a circle by installed capacity.</p>
+    <p class="take">Nearly half of the capacity on this map is hydro, and two thirds of that is in the South Island.</p></div>
     <div class="stats" id="stats"></div>
   </div>
   <div class="pills" id="pills"></div>
@@ -71,7 +73,8 @@ const fmt=n=>Math.round(n).toLocaleString("en-NZ");
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const map=L.map("map",{zoomControl:false,zoomSnap:.25,minZoom:4,attributionControl:false});
 L.control.zoom({position:"bottomright"}).addTo(map);
-map.fitBounds([[-47.4,166.2],[-34.2,178.8]],{paddingTopLeft:[10,120],paddingBottomRight:[10,50]});
+const fit=()=>map.fitBounds([[-47.4,166.2],[-34.2,178.8]],{paddingTopLeft:[10,document.querySelector(".head").offsetHeight+10],paddingBottomRight:[10,document.querySelector(".foot").offsetHeight+16]});
+fit();addEventListener("resize",fit);
 
 Promise.all([
   Promise.resolve(NZ),
@@ -86,7 +89,9 @@ Promise.all([
   const total=rows.reduce((s,r)=>s+r.mw,0),by={};
   rows.forEach((r,i)=>{r.rank=i+1;const b=by[r.fuel]=by[r.fuel]||{mw:0,n:0,layer:L.layerGroup().addTo(map),on:true};b.mw+=r.mw;b.n++});
   const fuels=Object.keys(by).sort((a,b)=>by[b].mw-by[a].mw),top=by[fuels[0]];
-  document.getElementById("stats").innerHTML=`<b>${rows.length}</b> stations · <b>${fmt(total)}</b> MW · ${fuels[0].toLowerCase()} is <b>${Math.round(top.mw/total*100)}%</b>`;
+  const stats=document.getElementById("stats"),upd=()=>{const v=rows.filter(r=>by[r.fuel].on),t=v.reduce((s,r)=>s+r.mw,0),s={};
+    v.forEach(r=>s[r.fuel]=(s[r.fuel]||0)+r.mw);const k=Object.keys(s).sort((a,b)=>s[b]-s[a])[0];
+    stats.innerHTML=v.length?`<b>${v.length}</b> stations · <b>${fmt(t)}</b> MW · ${k.toLowerCase()} is <b>${Math.round(s[k]/t*100)}%</b>`:"No fuels selected"};upd();
 
   rows.forEach(r=>{
     const c=COLORS[r.fuel]||COLORS.Other;
@@ -103,7 +108,7 @@ Promise.all([
 
   const pills=document.getElementById("pills"),bars=document.getElementById("bars");
   const toggle=f=>{const b=by[f];b.on=!b.on;b.on?b.layer.addTo(map):map.removeLayer(b.layer);
-    document.querySelectorAll(`[data-f="${f}"]`).forEach(e=>e.classList.toggle("off",!b.on))};
+    document.querySelectorAll(`[data-f="${f}"]`).forEach(e=>e.classList.toggle("off",!b.on));upd()};
   fuels.forEach(f=>{
     const b=by[f],c=COLORS[f]||COLORS.Other;
     pills.insertAdjacentHTML("beforeend",`<button class="pill" data-f="${f}"><i style="background:${c}"></i>${f} <em>${b.n}</em></button>`);
@@ -115,6 +120,7 @@ Promise.all([
     bars.insertAdjacentHTML("beforeend",`<div class="br" data-l="${k}"><span>${t}</span><div style="height:2px;background:${sw(c,d)};margin:auto 0"></div><span></span></div>`)});
   document.querySelectorAll("[data-l]").forEach(e=>e.addEventListener("click",()=>{const k=e.dataset.l,on=map.hasLayer(lay[k]);on?map.removeLayer(lay[k]):lay[k].addTo(map);document.querySelectorAll(`[data-l="${k}"]`).forEach(x=>x.classList.toggle("off",on))}));
   document.querySelectorAll("[data-f]").forEach(e=>e.addEventListener("click",()=>toggle(e.dataset.f)));
+  fit();
 });
 </script>
 </body>
