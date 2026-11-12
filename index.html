@@ -52,6 +52,45 @@ h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
 .sidebar-section{border-bottom:1px solid var(--line);padding-bottom:14px}.sidebar-section:last-child{border:0}.eyebrow{font-size:10px;letter-spacing:.12em;color:#6b7378;text-transform:uppercase;font-weight:750;margin-bottom:5px}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric{padding:12px;background:#f6f5f1;border-radius:10px}.metric strong{display:block;font-size:21px;letter-spacing:-.04em}.metric span{font-size:11px;color:var(--mute)}
 .segment{display:flex;background:#f1eee7;padding:3px;border-radius:9px;gap:2px}.segment button{background:transparent;border:0;border-radius:7px;padding:7px 8px;flex:1;font-size:11px;cursor:pointer;color:#697077}.segment button.active{background:white;color:#26323a;box-shadow:0 1px 4px #0002;font-weight:700}.island-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;padding:8px 0 3px}.island-track{background:#f0ece4;height:9px;border-radius:8px;overflow:hidden}.island-track div{height:100%;background:#0f8b8d;border-radius:8px}.island-track.south div{background:#496c90}.input{width:100%;padding:10px 12px;border:1px solid #dcd7cd;border-radius:9px;font:inherit;font-size:13px;outline:none}.input:focus{border-color:#0f8b8d}.search-results{max-height:162px;overflow:auto}.station-option{display:block;width:100%;text-align:left;padding:8px;border:0;border-bottom:1px solid #eeeae3;background:white;cursor:pointer;font-size:12px}.station-option:hover{background:#f4f7f5}.station-option small{display:block;color:#7b8589;margin-top:3px}.checkbox-row{display:flex;gap:9px;align-items:flex-start;font-size:12px;cursor:pointer}.checkbox-row input{accent-color:#0f8b8d;margin-top:2px}.note{background:#f6f3ec;border-radius:9px;padding:10px;font-size:11.5px;line-height:1.5;color:#58646a}.linkline{font-size:11px;line-height:1.7}.linkline a{color:#1a7078}.small-button{border:1px solid #d9d3c8;background:white;border-radius:8px;padding:7px 10px;font:inherit;font-size:11px;cursor:pointer}.import-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.import-row input{max-width:100%;font-size:10px}.pipeline-link{display:block;margin-top:11px;padding:10px 12px;border-radius:9px;background:#eaf2f2;color:#146067;text-decoration:none;font-weight:700;font-size:12px;text-align:center}.pipeline-link:hover,.pipeline-link:focus{background:#dceced}.pipeline-footnote{font-size:10.5px!important}.pipeline-footnote a{color:#146067}.planned-legend{display:inline-block;width:12px;height:12px;border:2px dashed #5969a3;border-radius:50%;vertical-align:middle;margin-right:4px}.bars{bottom:62px}.foot{right:358px;background:#f7f5f0d9;padding:4px 8px 0 0}.leaflet-control-zoom{margin-right:357px!important}.leaflet-control-attribution{display:none}
 @media(max-width:960px){.head{right:16px;top:12px}.head h1{font-size:21px}.head .sub,.head .take,.head .stats{font-size:11px}.head .take{max-width:100%}.sidebar{top:auto;bottom:0;left:0;right:0;width:100%;height:42vh;border-radius:18px 18px 0 0;padding:13px;gap:12px}.bars{display:none}.foot{display:none}.leaflet-control-zoom{margin-right:8px!important;margin-bottom:calc(42vh + 12px)!important}.pills{gap:5px}.pill{padding:5px 8px}}
+
+/* Responsive, accessible slide-up explorer: collapsed by default on phones. */
+.sidebar{overflow:hidden;padding:0;gap:0}
+.sidebar-body{overflow-y:auto;overscroll-behavior:contain;min-height:0;flex:1;padding:18px;display:flex;flex-direction:column;gap:14px}
+/* Desktop: collapsible right-side explorer; mobile remains a bottom sheet. */
+.sidebar-toggle{display:flex;flex:none;align-items:center;justify-content:center;gap:7px;width:100%;min-height:42px;background:#fff;border:0;border-bottom:1px solid var(--line);padding:9px 12px;color:var(--ink);font:inherit;font-weight:700;font-size:12px;cursor:pointer}
+.sidebar-toggle:focus-visible{outline:3px solid #0f8b8d;outline-offset:-3px}
+.sidebar-toggle-grip{display:none}
+.sidebar-toggle-arrow{font-size:19px;line-height:1}
+.sidebar:not(.is-open){height:44px;bottom:auto;min-height:44px;}
+.sidebar:not(.is-open) .sidebar-body{visibility:hidden;pointer-events:none}
+body.desktop-sidebar-collapsed .head{right:85px}
+body.desktop-sidebar-collapsed .foot{right:85px}
+body.desktop-sidebar-collapsed .leaflet-control-zoom{margin-right:70px!important}
+@media(min-width:961px){
+  .sidebar{transition:width .2s ease,height .2s ease}
+  .sidebar.is-open{height:auto}
+  .sidebar:not(.is-open){width:172px}
+  .sidebar:not(.is-open) .sidebar-toggle{border-bottom:0;border-radius:15px}
+  .sidebar-toggle-arrow{transition:none}
+}
+@media(max-width:960px){
+  .sidebar{height:56px;max-height:calc(100dvh - 12px);bottom:0;transition:height .24s ease;box-shadow:0 -3px 22px #26323a22}
+  .sidebar.is-open{height:min(70dvh,640px)}
+  .sidebar:not(.is-open){height:56px;bottom:0;width:100%}
+  .sidebar-toggle{display:flex;flex:none;align-items:center;justify-content:center;position:relative;gap:9px;width:100%;height:56px;padding:18px 16px 7px;background:#fff;color:var(--ink);border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:700;touch-action:manipulation}
+  .sidebar-toggle:focus-visible{outline:3px solid #0f8b8d;outline-offset:-4px}
+  .sidebar-toggle-grip{display:block;position:absolute;top:7px;left:50%;transform:translateX(-50%);width:38px;height:4px;border-radius:6px;background:#c3c5c4}
+  .sidebar-toggle-arrow{font-size:19px;line-height:1;transition:transform .2s}
+  .sidebar.is-open .sidebar-toggle-arrow{transform:rotate(180deg)}
+  .sidebar-body{padding:8px 14px 18px;gap:12px}
+  body.desktop-sidebar-collapsed .head{right:16px}
+  body.desktop-sidebar-collapsed .foot{right:16px}
+  body.desktop-sidebar-collapsed .leaflet-control-zoom{margin-right:8px!important}
+  .sidebar:not(.is-open) .sidebar-body{visibility:hidden;pointer-events:none}
+  .leaflet-control-zoom{margin-bottom:68px!important}
+  body.mobile-sidebar-open .leaflet-control-zoom{margin-bottom:calc(min(70dvh,640px) + 12px)!important}
+}
+@media(prefers-reduced-motion:reduce){.sidebar,.sidebar-toggle-arrow{transition:none}}
 </style>
 </head>
 <body>
@@ -66,7 +105,9 @@ h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
   <div class="pills" id="pills"></div>
 </div>
 <div class="bars"><h2>Capacity by fuel · visible stations</h2><div id="bars"></div></div>
-<aside class="sidebar" aria-label="Power system explorer">
+<aside class="sidebar" id="power-sidebar" aria-label="Power system explorer">
+  <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-controls="sidebar-body" aria-expanded="false"><span class="sidebar-toggle-grip" aria-hidden="true"></span><span id="sidebar-toggle-label">Explore generation overview</span><span class="sidebar-toggle-arrow" aria-hidden="true">⌃</span></button>
+  <div class="sidebar-body" id="sidebar-body">
   <div class="sidebar-section"><div class="eyebrow">Explore New Zealand electricity</div><h2>Generation overview</h2><p>Installed capacity of the mapped OSM stations, not annual electricity production.</p><div class="metric-grid" style="margin-top:12px"><div class="metric"><strong id="metric-mw">—</strong><span>Mapped capacity · MW</span></div><div class="metric"><strong id="metric-count">—</strong><span>Stations shown</span></div></div></div>
   <div class="sidebar-section"><h3>Compare the islands</h3><div class="segment" id="island-filter"><button class="active" data-island="All">Both islands</button><button data-island="North">North</button><button data-island="South">South</button></div><div id="island-summary" style="margin-top:9px"></div><p id="island-caption"></p></div>
   <div class="sidebar-section"><h3>Find a power station</h3><input id="station-search" class="input" type="search" placeholder="Search station or operator…" autocomplete="off"><div id="search-results" class="search-results"></div></div>
@@ -79,6 +120,7 @@ h1{font-size:26px;line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
     <p class="pipeline-footnote">Source: <a href="https://www.ea.govt.nz/news/eye-on-electricity/new-generation-projects-flowing-through-the-investment-pipeline/" target="_blank" rel="noopener noreferrer">Electricity Authority, 11 December 2025</a> (October 2025 reporting period). Exact project locations are only drawn where independently sourced coordinates have been published in this repository.</p>
   </div>
   <div class="sidebar-section"><h3>Data & methodology</h3><div class="linkline"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM contributors · ODbL</a><br><a href="https://www.emi.ea.govt.nz/Wholesale/Datasets/Generation/GenerationFleet/Existing" target="_blank" rel="noopener">EA existing generation fleet</a><br><a href="https://www.emi.ea.govt.nz/Wholesale/Datasets/Generation/GenerationFleet/Proposed" target="_blank" rel="noopener">EA proposed generation datasets</a><br><a href="https://www.mbie.govt.nz/building-and-energy/energy-and-natural-resources/energy-statistics-and-modelling/energy-statistics/electricity-statistics" target="_blank" rel="noopener">MBIE electricity statistics</a></div><p>Mapped totals depend on OSM coverage, tagging and the original capacity enrichment. Island assignments use the mainland coastlines; Stewart Island is grouped with the South Island. Transmission lines are OSM 110 kV+.</p></div>
+  </div>
 </aside>
 <div class="foot">Hover a circle for its name and click to pin the details. Scroll or use + and − to zoom, drag to pan. Data: OpenStreetMap contributors (ODbL), with a few capacities checked against Wikipedia (CC BY-SA), Genesis Energy and Contact Energy. Coastline: Natural Earth. Lines shown are 110 kV and above, as mapped in OpenStreetMap (mostly Transpower), so some gaps are possible. Many wind, solar and small hydro stations connect at lower voltages, which are not drawn. Capacities are as tagged and may differ from operator ratings. Map by Melanie van Enter. #30DayMapChallenge Day 12: Power</div>
 
@@ -95,8 +137,31 @@ const fmt=n=>Math.round(n).toLocaleString('en-NZ');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const map=L.map('map',{zoomControl:false,zoomSnap:.25,minZoom:4,attributionControl:false});
 L.control.zoom({position:'bottomright'}).addTo(map);
-function fit(){const m=innerWidth<=960;map.fitBounds([[-47.4,166.2],[-34.2,178.8]],{paddingTopLeft:[10,document.querySelector('.head').offsetHeight+12],paddingBottomRight:[m?10:335,m?innerHeight*.42:40]})}
+function fit(){const m=innerWidth<=960;map.fitBounds([[-47.4,166.2],[-34.2,178.8]],{paddingTopLeft:[10,document.querySelector('.head').offsetHeight+12],paddingBottomRight:[m?10:(document.body.classList.contains('desktop-sidebar-collapsed')?15:335),m?72:40]})}
 fit();addEventListener('resize',()=>{map.invalidateSize();fit()});
+const sidebar=document.getElementById('power-sidebar');
+const sidebarToggle=document.getElementById('sidebar-toggle');
+const sidebarBody=document.getElementById('sidebar-body');
+const sidebarToggleLabel=document.getElementById('sidebar-toggle-label');
+function setSidebarOpen(open){
+  const mobile=matchMedia('(max-width:960px)').matches;
+  sidebar.classList.toggle('is-open',open);
+  document.body.classList.toggle('mobile-sidebar-open',mobile&&open);
+  document.body.classList.toggle('desktop-sidebar-collapsed',!mobile&&!open);
+  sidebarToggle.setAttribute('aria-expanded',String(open));
+  sidebarToggleLabel.textContent=mobile
+    ? (open?'Hide generation overview':'Explore generation overview')
+    : (open?'Hide overview':'Show overview');
+  const arrow=sidebarToggle.querySelector('.sidebar-toggle-arrow');
+  arrow.textContent=mobile?'⌃':(open?'›':'‹');
+  sidebarBody.inert=!open;
+  if(open)sidebarBody.scrollTop=0;
+  map.invalidateSize();
+}
+sidebarToggle.addEventListener('click',()=>setSidebarOpen(!sidebar.classList.contains('is-open')));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('is-open')){setSidebarOpen(false);sidebarToggle.focus()}});
+matchMedia('(max-width:960px)').addEventListener('change',e=>setSidebarOpen(!e.matches));
+setSidebarOpen(!matchMedia('(max-width:960px)').matches);
 map.createPane('land').style.zIndex=300;
 L.geoJSON(NZ,{pane:'land',interactive:false,style:{fillColor:'#ece7de',fillOpacity:1,color:'#cfc7b8',weight:1}}).addTo(map);
 map.createPane('lines').style.zIndex=350;
