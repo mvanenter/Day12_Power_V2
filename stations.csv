@@ -1,0 +1,138 @@
+name,fuel,mw,operator,start_date,lat,lon
+Te Āpiti Wind Farm,Wind,90.75,Meridian Energy,2004,-40.29565,175.8066
+Hau Nui Wind Farm,Wind,8.65,Genesis Energy,,-41.37325,175.47624
+Te Rere Hau Wind Farm,Wind,48.5,NZ Windfarms,,-40.39236,175.73394
+Tararua Wind Farm,Wind,161.0,Mercury Energy,,-40.35259,175.77203
+Maraetai,Hydro,360.0,Mercury Energy,,-38.35143,175.74368
+West Wind Wind Farm,Wind,143.0,Meridian Energy,,-41.27824,174.6767
+Mill Creek Wind Farm,Wind,60.0,Meridian Energy,,-41.20181,174.73769
+White Hill Wind Farm,Wind,58.0,Meridian Energy,,-45.75386,168.2659
+Karāpiro,Hydro,112.5,Mercury Energy,1947,-37.92448,175.53867
+Arapuni,Hydro,196.66,Mercury Energy,1929,-38.0766,175.64143
+Lulworth Wind Farm,Wind,1.0,Energy Marlborough Limited,,-41.89029,174.12364
+Ohau B,Hydro,212.0,Meridian Energy,,-44.30058,170.11119
+Waipāpa,Hydro,54.0,Mercury Energy,1961,-38.29185,175.68249
+Clyde Dam,Hydro,432.0,Contact Energy,,-45.17999,169.30646
+Roxburgh Dam,Hydro,360.0,Contact Energy,,-45.47664,169.32109
+Ngāwhā Geothermal,Geothermal,75.0,Top Energy,,-35.40966,173.86094
+Mahinerangi Wind Farm,Wind,36.0,Tilt Renewables,,-45.77495,169.87719
+Te Uku Wind Farm,Wind,64.4,Meridian Energy,,-37.88439,174.96418
+Weld Cone Wind Farm,Wind,0.75,Energy Marlborough Limited,,-41.84558,174.16234
+Ohau C,Hydro,212.0,Meridian Energy,,-44.34285,170.18081
+Ōhau A,Hydro,264.0,Meridian Energy,,-44.26446,170.03123
+Cobb,Hydro,32.0,Trustpower,,-41.08628,172.73225
+Benmore,Hydro,540.0,Meridian Energy,1965,-44.56638,170.19358
+Mount Stewart Wind Farm,Wind,7.65,Pioneer Energy,,-46.05364,169.77586
+Waipori 4,Hydro,8.0,Trustpower,,-45.92525,170.02092
+Waipori 3,Hydro,7.6,Trustpower,,-45.91676,169.99188
+Waipori 2A,Hydro,58.0,Trustpower,,-45.90552,169.98589
+Waipori 1A,Hydro,10.0,Trustpower,,-45.88127,169.97741
+Pātea,Hydro,32.0,Trustpower,,-39.54651,174.56741
+Flat Hill Wind Farm,Wind,6.8,Pioneer Energy,,-46.58031,168.28469
+Fraser,Hydro,2.8,Pioneer Energy,,-45.20593,169.30231
+Talla Burn,Hydro,2.6,Talla Burn Generation,,-45.75607,169.51352
+Horseshoe Bend Wind Farm,Wind,2.25,Pioneer Energy,,-45.54362,169.5046
+Horseshoe Bend,Hydro,4.3,Pioneer Energy,,-45.54093,169.49325
+Kowhai,Hydro,1.9,Pioneer Energy,,-45.53202,169.36028
+Michelle,Hydro,1.6,Pioneer Energy,,-45.53973,169.3461
+George,Hydro,1.0,Pioneer Energy,,-45.53848,169.32784
+Teviot Bridge,Hydro,1.13,Pioneer Energy,,-45.538,169.32279
+Ellis,Hydro,7.8,Pioneer Energy,,-45.53804,169.32258
+Duffers,Hydro,0.6,Trustpower,,-42.72987,171.20562
+Dillmans,Hydro,3.5,Trustpower,,-42.65563,171.19499
+Kumara,Hydro,6.5,Trustpower,,-42.63597,171.19532
+Flaxy,Hydro,2.1,Trustpower,,-38.63423,176.55795
+Argyle,Hydro,3.8,Trustpower,,-41.67075,173.20329
+Wairau,Hydro,7.2,Trustpower,,-41.64827,173.22417
+Upper Roaring Meg,Hydro,1.3,Pioneer Energy,,-44.98324,169.06034
+Lower Roaring Meg,Hydro,3.0,Pioneer Energy,,-45.00155,169.06998
+Arnold,Hydro,3.0,Trustpower,,-42.52369,171.40791
+Wahapo,Hydro,3.1,Trustpower,,-43.24765,170.23431
+Waihopai,Hydro,2.4,Trustpower,,-41.66435,173.57463
+Montalto,Hydro,1.8,Trustpower,,-43.80034,171.33917
+Highbank,Hydro,25.2,Trustpower,,-43.57309,171.73571
+McKee Waitara,Gas,100.0,Nova Energy,,-39.09767,174.33609
+Motukawa,Hydro,5.0,Trustpower,,-39.18404,174.38175
+Whakamaru,Hydro,124.0,Mercury Energy,1952,-38.41655,175.80093
+Waipipi Wind Farm,Wind,133.3,Mercury Energy,,-39.79765,174.54998
+Turitea Wind Farm,Wind,222.0,Mercury Energy,,-40.44722,175.67778
+Harapaki Wind Farm,Wind,176.0,Meridian Energy,,-39.18967,176.70796
+Ophua Dam,Hydro,7.0,,,-43.99979,170.89198
+Kaiwera Downs Wind Farm,Wind,197.8,Mercury Energy,,-46.2231,169.02467
+Stratford,Gas,577.0,Contact Energy,,-39.33076,174.31941
+Tauhei solar farm,Solar,147.0,Harmony Energy;First Renewables,,-37.58836,175.71214
+Kaiwaikawe Wind Farm,Wind,77.0,Mercury Energy,,-35.87043,173.72657
+Ātiamuri,Hydro,84.0,Mercury Energy,1958,-38.39256,176.02338
+Ōhakuri,Hydro,112.0,Mercury Energy,1961,-38.4083,176.08793
+Kōwhai Park solar farm,Solar,150.0,Lightsource BP;Contact Energy,2026,-43.49308,172.51346
+Waitaki,Hydro,105.0,Meridian Energy,,-44.6907,170.42632
+Whirinaki,Other,155.0,Contact Energy,,-39.38289,176.88831
+Rotokawa,Geothermal,34.5,Mercury Energy,1997,-38.61239,176.19338
+Ōhaaki,Geothermal,57.0,Contact Energy,1989,-38.52749,176.29471
+Aviemore,Hydro,220.0,Meridian Energy,1968,-44.65641,170.35486
+Ngā Awa Pūrua,Geothermal,140.0,Mercury Energy,2010,-38.61432,176.18411
+Huntly,Thermal,1304.0,Genesis Energy,,-37.54422,175.14881
+Te Huka Geotherrmal Binary,Geothermal,79.0,Contact Energy,,-38.66844,176.12005
+Kawerau,Geothermal,100.0,Mercury Energy,2008,-38.06354,176.72577
+Mōkai,Geothermal,111.0,Mercury Energy,2000,-38.53129,175.92687
+Wairākei,Geothermal,175.0,Contact Energy,,-38.62739,176.1036
+Poihipi,Geothermal,55.0,Contact Energy,1997,-38.63027,176.04152
+Mangahao,Hydro,38.0,King Coutry Energy,1924,-40.57673,175.4502
+Manapōuri,Hydro,800.0,Meridian Energy,,-45.52105,167.27786
+Tuai,Hydro,52.0,Genesis Energy,,-38.80677,177.15077
+Kaitawa,Hydro,36.0,Genesis Energy,,-38.80323,177.13105
+Tekapo B,Hydro,160.0,Genesis Energy,1971,-44.12273,170.21202
+Ngā Tamariki,Geothermal,132.0,Mercury Energy,2013,-38.54609,176.19451
+Te Mihi,Geothermal,166.0,Contact Energy,2014,-38.61831,176.04818
+Coleridge,Hydro,39.0,Trustpower,,-43.36412,171.5271
+Wheao,Hydro,24.0,Trustpower,,-38.63339,176.57802
+Tokaanu,Hydro,240.0,Genesis Energy,,-38.9813,175.76957
+Aratiatia,Hydro,78.0,Mercury Energy,1964,-38.61582,176.14232
+Mangorei,Hydro,4.5,Trustpower,,-39.10519,174.11896
+Lower Mangapapa,Hydro,5.6,,Apri,-37.82079,176.04108
+Ruahihi,Hydro,20.0,,,-37.77738,176.0552
+Tekapo A,Hydro,30.0,Genesis Energy,1951,-44.01423,170.46055
+Junction Road,Gas,100.0,Todd Generation,,-39.11711,174.10368
+Kenepuru Heads diesel generators,Other,1.32,Marlborough Lines,,-41.16353,174.12251
+Pukekohe Wastewater Treatment Plant Solar Farm,Solar,0.12,,,-37.26441,174.91134
+Rosedale Solar Array,Solar,1.039,Watercare,,-36.74591,174.71629
+Te Ahi O Maui,Geothermal,28.0,,2018,-38.06246,176.7032
+Kapuni Solar Power Plant,Solar,2.1,Sunergise,2021,-39.48227,174.1719
+Tauhara,Geothermal,173.0,Contact Energy,2024,-38.66922,176.15581
+Turnbull River,Hydro,0.9,NZ Energy,1974,-43.97296,168.95058
+Piripaua,Hydro,40.0,Genesis Energy,,-38.83911,177.16797
+Piriaka,Hydro,1.5,Trustpower,1924,-38.91195,175.34285
+Lloyd Mandeno,Hydro,16.0,,,-37.84394,176.05078
+Rangipo,Hydro,120.0,Genesis Energy,1983,-39.15324,175.83731
+Stewart Island,Other,0.916,Stewart Island Electrical Supply Authority,,-46.89047,168.12737
+Pukenui solar farm,Solar,20.8,Far North Solar Farm,2025,-34.81831,173.11091
+Wairau Valley solar farm,Solar,1.85,Kea Energy,2021,-41.60886,173.43055
+Kohirā solar farm,Solar,23.7,Lodestone Energy,2023,-35.08215,173.21897
+DARC & NEXBE,Solar,0.285,,,-43.54421,172.49639
+Glenbrook,Gas,112.0,,,-37.20649,174.72434
+Taylor Pass solar farm,Solar,0.852,Marlborough Lines Limited,,-41.53868,173.93786
+Gisborne Airport Solar Farm,Solar,5.2,Eastland Generation,,-38.65774,177.98146
+Redvale Landfill Energy Park,Other,12.0,,,-36.66422,174.62887
+Ardmore Solar Farm,Solar,9.75,,2025,-37.03612,175.00161
+Waiuku Solar Farm,Solar,2.4,,,-37.22034,174.76495
+Lauriston Solar Farm,Solar,47.0,Genesis,2025,-43.73051,171.78958
+Rangitaiki solar farm,Solar,23.7,Lodestone Energy,2024,-37.99725,176.80917
+Te Herenga o Te Rā solar farm,Solar,30.4,Lodestone Energy,2025,-38.02783,177.18223
+Seaview Solar Farm,Solar,4.07,Energy Marlborough,2024,-41.64897,174.1299
+Te Puna Mauri ō Omaru,Solar,16.7,Northpower,,-36.11851,174.02768
+Naumai Solar Farm,Solar,4.37,Infratec,,-36.09422,173.97669
+Rānui Solar Farm,Solar,12.6,Rānui Solar,,-41.52741,173.99524
+Waingawa Solar Farm,Solar,4.7,Lightyears Solar,,-40.94963,175.57283
+Bream Bay Peaker,Other,9.0,Manawa Energy,,-35.8479,174.48178
+Taiohi solar farm,Solar,22.4,NewPower Energy,2025,-37.44063,175.13251
+Oakridge Solar,Solar,3.4,Kiwi Solar,,-37.46036,175.0948
+Twin Rivers solar farm,Solar,24.0,Rānui Generation,,-35.13838,173.3518
+Pāmu Rā ki Whitianga solar farm,Solar,23.75,Lodestone Energy,,-36.85069,175.66419
+Clandeboye solar farm,Solar,24.0,Lodestone Energy,,-44.19057,171.40858
+Omeheu solar farm,Solar,27.0,Far North Solar Farm,,-37.98017,176.85486
+Te Matakupenga solar farm,Solar,10.0,New Plymouth Airport,2025,-39.01506,174.17191
+Point Durham Wind Farm,Wind,0.675,,2025,-44.01,-176.67478
+Dannevirke SF,Solar,19.0,Dannevirke SF Limited Partnership,2026,-40.19279,176.03686
+Waimakariri 1 solar farm,Solar,5.0,Lightyears Solar,2026,-43.37109,172.50566
+Willowby solar farm,Solar,7.2,RCR Green,2025,-43.94332,171.72143
+Amethyst Hydro Electric Power Scheme,Hydro,7.6,,,-43.15891,170.6285
